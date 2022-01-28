@@ -168,7 +168,7 @@ def fibonacci_method(f, a, b, fib_sequence, N, tol = 0.5):
 def main():
     # Setup GUI window
     window = tk.Tk()
-    window.title("fib_sequencenacci Method Illustrated")
+    window.title("Fibonacci Method Illustrated")
 
     # User input for function to be examined, f
     lbl_f = tk.Label(master=window, text = "f(x,y) = ")
