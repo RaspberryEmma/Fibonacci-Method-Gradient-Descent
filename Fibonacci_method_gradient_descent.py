@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Illustrating the Fibonacci method of gradient descent in action graphically
+Illustrating the nacci method of gradient descent in action graphically
 Emma Tarmey
 30/11/20, edits made since
 """
@@ -33,9 +33,9 @@ def buttonPressed(ent_f, ent_N, ent_a, ent_b, ent_tol, window):
     b   = float(ent_b.get())
     tol = float(ent_tol.get())
 
-    Fibo = np.zeros(N+1, float)
+    fib_sequence = np.zeros(N+1, float)
     for i in range(0, N+1):
-        Fibo[i] = fibonacci(i)
+        fib_sequence[i] = fibonacci(i)
 
     print("\n*** Arguments: ***")
     print("f   = ",    ent_f.get())
@@ -45,7 +45,7 @@ def buttonPressed(ent_f, ent_N, ent_a, ent_b, ent_tol, window):
     print("tol = ",  ent_tol.get())
 
     print("\n*** Iterations: ***\n")
-    solution = fibonacci_method(f, a, b, Fibo, N, tol)
+    solution = fibonacci_method(f, a, b, fib_sequence, N, tol)
     plot_function(window, f, a, b, solution)
 
     print("*** Final Solution: ***")
@@ -55,7 +55,7 @@ def buttonPressed(ent_f, ent_N, ent_a, ent_b, ent_tol, window):
     print("f(x_2) = ", f(solution[1]))
    
 
-# Fibonacci number generator
+# Find the nth Fibonacci number
 def fibonacci(n):
     a = 1
     b = 1
@@ -135,14 +135,14 @@ def plot_function(window, f, a, b, solution):
     canvas.get_tk_widget().pack()
 
 
-def fibonacci_method(f, a, b, Fibo, N, tol = 0.5):
+def fibonacci_method(f, a, b, fib_sequence, N, tol = 0.5):
     # count iterations of the method
     i = 0
 
     # successively refine a,b
     d  = b - a # width of interval
-    x1 = (Fibo[N-2] / Fibo[N]) * (d + a)
-    x2 = (Fibo[N-1] / Fibo[N]) * (d + a)
+    x1 = (fib_sequence[N-2] / fib_sequence[N]) * (d + a)
+    x2 = (fib_sequence[N-1] / fib_sequence[N]) * (d + a)
 
     while (d > tol):
         fx1 = f(x1)
@@ -156,19 +156,19 @@ def fibonacci_method(f, a, b, Fibo, N, tol = 0.5):
             b  = x2;
             d  = b - a
             x2 = x1
-            x1 = (Fibo[N-2] / Fibo[N]) * (d + a)
+            x1 = (fib_sequence[N-2] / fib_sequence[N]) * (d + a)
         else:
             a  = x1
             d  = b - a
             x1 = x2
-            x2 = (Fibo[N-1] / Fibo[N]) * (d + a)
+            x2 = (fib_sequence[N-1] / fib_sequence[N]) * (d + a)
     return (a, b)
 
 
 def main():
     # Setup GUI window
     window = tk.Tk()
-    window.title("Fibonacci Method Illustrated")
+    window.title("fib_sequencenacci Method Illustrated")
 
     # User input for function to be examined, f
     lbl_f = tk.Label(master=window, text = "f(x,y) = ")
