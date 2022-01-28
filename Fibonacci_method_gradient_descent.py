@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Illustrating the nacci method of gradient descent in action graphically
+Illustrating the Fibonacci method of gradient descent in action graphically
 Emma Tarmey
 30/11/20, edits made since
 """
